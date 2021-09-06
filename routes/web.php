@@ -14,12 +14,11 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('create',[App\Http\Controllers\ImageController::class, 'create']);
-Route::post('create',[App\Http\Controllers\ImageController::class, 'store']);
+Route::get('/',[App\Http\Controllers\WaterMarkController::class, 'create']);
+Route::post('create',[App\Http\Controllers\WaterMarkController::class, 'imageWatermark']);
 
-Route::get('watermark-image',[App\Http\Controllers\WaterMarkController::class, 'imageWatermark'] );
-Route::get('watermark-text',[App\Http\Controllers\WaterMarkController::class, 'textWatermark'] );
+// Route::get('/',[App\Http\Controllers\WaterMarkController::class, 'imageWatermark'] );
