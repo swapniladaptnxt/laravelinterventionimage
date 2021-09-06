@@ -21,7 +21,9 @@ class WaterMarkController extends Controller
         //     $constraint->upsize();
         // });
         $img->insert($img1, 'center');
-        $img->save(public_path('images/new-image.png'));
+        $img->save('images/new-image.png');
+
+        // $img->save(public_path('images/new-image.png'));
         $img->encode('png');
         $type      = 'png';
         $new_image = 'data:image/' . $type . ';base64,' . base64_encode($img);
