@@ -21,7 +21,7 @@ class WaterMarkController extends Controller
         //     $constraint->upsize();
         // });
         $img->insert($img1, 'center');
-        $img->save('images/new-image.png');
+        // $img->save('images/new-image.png');
 
         // $img->save(public_path('images/new-image.png'));
         $img->encode('png');
