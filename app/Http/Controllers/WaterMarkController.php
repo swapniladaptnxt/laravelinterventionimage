@@ -15,7 +15,7 @@ class WaterMarkController extends Controller
                 'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
             ]);
         }
-
+        $percentage = 80;
         $img                            = Image::make($request->file('filename'))->blur(40)->resize($request->height, $request->width);
         list($width_orig, $height_orig) = getimagesize($request->file('filename'));
         $ratio_orig                     = $width_orig / $height_orig;
@@ -24,7 +24,7 @@ class WaterMarkController extends Controller
         } else {
             $height =  $request->width / $ratio_orig;
         }
-        $img1 = Image::make($request->file('filename'))->resize($request->width, $height);
+        $img1 = Image::make($request->file('filename'))->resize(($percentage / 100) * $request->width, $height);
         // $img1->fit(800, 600, function ($constraint) {
         //     $constraint->upsize();
         // });
