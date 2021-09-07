@@ -15,16 +15,27 @@ class WaterMarkController extends Controller
                 'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
             ]);
         }
-        $percentage = 80;
-        $img                            = Image::make($request->file('filename'))->blur(40)->resize($request->height, $request->width);
-        list($width_orig, $height_orig) = getimagesize($request->file('filename'));
-        $ratio_orig                     = $width_orig / $height_orig;
-        if ( $request->width / $request->height > $ratio_orig) {
-            $width = $request->height * $ratio_orig;
+        $size = 80;
+        $img        = Image::make($request->file('filename'))->blur(40)->resize($request->height, $request->width);
+        // list($width_orig, $height_orig) = getimagesize($request->file('filename'));
+        // $ratio_orig                     = $width_orig / $height_orig;
+        // if ( $request->width / $request->height > $ratio_orig) {
+        //     $width = $request->height * $ratio_orig;
+        // } else {
+        //     $height =  $request->width / $ratio_orig;
+        // }
+        $dimensions = getimagesize($request->file('filename'));
+        $width      = $dimensions[0];
+        $height     = $dimensions[1];
+
+        if (is_array($size)) {
+            $new_width  = $size[0];
+            $new_height = $size[1];
         } else {
-            $height =  $request->width / $ratio_orig;
+            $new_width  = ceil(($size / 100) * $width);
+            $new_height = ceil(($size / 100) * $height);
         }
-        $img1 = Image::make($request->file('filename'))->resize(($percentage / 100) * $request->width, ($percentage / 100) *$height);
+        $img1 = Image::make($request->file('filename'))->resize($new_width, $new_height);
         // $img1->fit(800, 600, function ($constraint) {
         //     $constraint->upsize();
         // });

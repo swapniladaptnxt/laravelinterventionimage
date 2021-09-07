@@ -111,15 +111,15 @@
                                 @csrf
 
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Height" name="height" required>
+                                <input type="text" class="form-control" placeholder="Enter Height" name="height" value="{{ old('height') }}" required>
                             </div>
                             <div class="form-group">
-                                <input id="password-field" type="text" class="form-control" name="width" placeholder="Enter Width"
+                                <input id="password-field" type="text" class="form-control" name="width" value="{{ old('width') }}" placeholder="Enter Width"
                                     required>
                                 
                             </div>
                              <div class="form-group">
-                                <input id="password-field" type="file" name="filename" class="form-control" 
+                                <input id="password-field" type="file" name="filename"  class="form-control" 
                                     required>
                                
                             </div>
