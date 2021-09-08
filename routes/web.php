@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +11,7 @@ use App\Http\Controllers;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/',[App\Http\Controllers\WaterMarkController::class, 'create']);
-Route::post('create',[App\Http\Controllers\WaterMarkController::class, 'imageWatermark']);
-
-// Route::get('/',[App\Http\Controllers\WaterMarkController::class, 'imageWatermark'] );
+Route::get('/', function () {
+    return view('createimage');
+});
+Route::post('/uploadPhoto',[App\Http\Controllers\WaterMarkController::class, 'imageWatermark']);
